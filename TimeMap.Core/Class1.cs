@@ -1,4 +1,4 @@
-﻿namespace TimeMap.Domain
+﻿namespace TimeMap.Core
 {
     public class Class1
     {
