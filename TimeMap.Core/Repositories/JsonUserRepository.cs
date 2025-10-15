@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
+﻿using System.Text.Json;
 using TimeMap.Application.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -37,18 +32,18 @@ public class JsonUserRepository : IUserRepository
         File.WriteAllText(_filePath, json);
     }
 
-    public void AddUser(User user)
+    public void Add(User user)
     {
         _users.Add(user);
         SavetoJson();
     }
 
-    public List<User> GetAllUsers()
+    public List<User> GetAll()
     {
         return _users;
     }
 
-    public User? GetUserById(Guid id)
+    public User? GetById(Guid id)
     {
         return _users.FirstOrDefault(u => u.Id == id);
     }
