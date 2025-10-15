@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeMap.Domain.Entities;
 
-namespace TimeMap.Application.Interfaces
-{
-    internal interface IUserRepository
-    {
-        void AddUser(User user);
-        List<User> GetAllUsers();
-        User? GetUserById(Guid id);
+namespace TimeMap.Application.Interfaces;
 
-    }
+public interface IUserRepository
+{
+    void AddUser(User user);
+    List<User> GetAllUsers();
+    User? GetUserById(Guid id);
+
 }

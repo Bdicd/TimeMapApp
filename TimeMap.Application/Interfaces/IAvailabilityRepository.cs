@@ -7,10 +7,10 @@ using TimeMap.Domain.Entities;
 
 namespace TimeMap.Application.Interfaces;
 
-internal interface IAvailabilityRepository
+public interface IAvailabilityRepository
 {
-    void AddAvailability(List<Availability> availabilities);
+    void AddAvailability(Availability availability);
 
     List<Availability> GetAllAvailabilities();
-    List<Availability> GetAvailabilitiesByUser(User user);
+    List<Availability> GetAvailabilitiesByUser(Guid userId);
 }

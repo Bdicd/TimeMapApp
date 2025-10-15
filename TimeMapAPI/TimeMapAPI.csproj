@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TimeMap.Application\TimeMap.Application.csproj" />
+    <ProjectReference Include="..\TimeMap.Domain\TimeMap.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
