@@ -1,5 +1,5 @@
 
-namespace TimeMapAPI
+namespace TimeMap.API
 {
     public class Program
     {

@@ -1,25 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMap.Domain", "TimeMap.Domain\TimeMap.Domain.csproj", "{7C339538-D88D-4123-916C-95FE18D002EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMapAPI", "TimeMapAPI\TimeMapAPI.csproj", "{6BD4C5B0-4EB1-4E30-A8F7-3E44AD89B2A6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9FC95256-A3E5-434B-8EDF-8057C60E0EA4} = {9FC95256-A3E5-434B-8EDF-8057C60E0EA4}
-		{BE5836A5-8C3B-443D-B6A6-B74BF23D7238} = {BE5836A5-8C3B-443D-B6A6-B74BF23D7238}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMap.API", "TimeMapAPI\TimeMap.API.csproj", "{6BD4C5B0-4EB1-4E30-A8F7-3E44AD89B2A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMap.Infrastructure", "TimeMap.Infrastructure\TimeMap.Infrastructure.csproj", "{9FC95256-A3E5-434B-8EDF-8057C60E0EA4}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7C339538-D88D-4123-916C-95FE18D002EA} = {7C339538-D88D-4123-916C-95FE18D002EA}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMap.Application", "TimeMap.Application\TimeMap.Application.csproj", "{BE5836A5-8C3B-443D-B6A6-B74BF23D7238}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7C339538-D88D-4123-916C-95FE18D002EA} = {7C339538-D88D-4123-916C-95FE18D002EA}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMap.Core", "TimeMap.Core\TimeMap.Core.csproj", "{00E5FF3F-44D7-4823-04B1-AA21D5A44321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +23,10 @@ Global
 		{6BD4C5B0-4EB1-4E30-A8F7-3E44AD89B2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD4C5B0-4EB1-4E30-A8F7-3E44AD89B2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD4C5B0-4EB1-4E30-A8F7-3E44AD89B2A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FC95256-A3E5-434B-8EDF-8057C60E0EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FC95256-A3E5-434B-8EDF-8057C60E0EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FC95256-A3E5-434B-8EDF-8057C60E0EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FC95256-A3E5-434B-8EDF-8057C60E0EA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE5836A5-8C3B-443D-B6A6-B74BF23D7238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE5836A5-8C3B-443D-B6A6-B74BF23D7238}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE5836A5-8C3B-443D-B6A6-B74BF23D7238}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE5836A5-8C3B-443D-B6A6-B74BF23D7238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E5FF3F-44D7-4823-04B1-AA21D5A44321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E5FF3F-44D7-4823-04B1-AA21D5A44321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E5FF3F-44D7-4823-04B1-AA21D5A44321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E5FF3F-44D7-4823-04B1-AA21D5A44321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
