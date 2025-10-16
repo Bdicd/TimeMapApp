@@ -19,11 +19,11 @@ public class JsonUserRepository : IUserRepository
     private List<User> LoadFromJson()
     {
         if (!File.Exists(_filePath))
-            return new List<User>();
+            return [];
 
         var json = File.ReadAllText(_filePath);
         var users = JsonSerializer.Deserialize<List<User>>(json);
-        return users ?? new List<User>();
+        return users ?? [];
     }
 
     private void SavetoJson()

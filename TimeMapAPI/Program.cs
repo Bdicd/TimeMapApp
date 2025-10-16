@@ -12,6 +12,7 @@ namespace TimeMap.API
 
             builder.Services.AddAuthorization();
             builder.Services.AddConnections();
+            builder.Services.AddControllers();
 
             builder.Services.AddSingleton<IUserRepository, JsonUserRepository>();
             builder.Services.AddSingleton<IAvailabilityRepository, JsonAvailabilityRepository>();
