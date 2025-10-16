@@ -2,10 +2,10 @@
 {
     public class Availability
     {
-        public Guid Id { get; init; }
-        public Guid UserId { get; init; }
-        public DateTime StartTimeUtc { get; init; }
-        public DateTime EndTimeUtc { get; init; }
+        public required Guid Id { get; init; }
+        public required Guid UserId { get; init; }
+        public required DateTime StartTimeUtc { get; init; }
+        public required DateTime EndTimeUtc { get; init; }
     }
 
 }

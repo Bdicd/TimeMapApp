@@ -1,3 +1,6 @@
+using TimeMap.Core.Interfaces;
+using TimeMap.Core.Repositories;
+
 
 namespace TimeMap.API
 {
@@ -8,6 +11,10 @@ namespace TimeMap.API
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddAuthorization();
+            builder.Services.AddConnections();
+
+            builder.Services.AddSingleton<IUserRepository, JsonUserRepository>();
+            builder.Services.AddSingleton<IAvailabilityRepository, JsonAvailabilityRepository>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -23,9 +30,8 @@ namespace TimeMap.API
             }
 
             app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
+            app.MapControllers();
+            //app.UseAuthorization();
 
             app.Run();
         }

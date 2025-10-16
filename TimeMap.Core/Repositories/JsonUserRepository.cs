@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
-using TimeMap.Application.Interfaces;
+using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
-namespace TimeMap.Infrastructure.Repositories;
+namespace TimeMap.Core.Repositories;
 
 public class JsonUserRepository : IUserRepository
 {
