@@ -29,7 +29,7 @@ public class JsonAvailabilityRepository : IAvailabilityRepository
 
     public List<Availability> GetByUserId(Guid userId)
     {
-        return _availabilities.Where(a => a.UserId == userId).ToList();
+        return [.. _availabilities.Where(a => a.UserId == userId)];
     }
 
     private List<Availability> LoadFromJson()

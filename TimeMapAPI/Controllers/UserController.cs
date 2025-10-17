@@ -6,13 +6,9 @@ namespace TimeMap.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController : ControllerBase
+public class UserController(IUserRepository userRepository) : ControllerBase
 {
-    private readonly IUserRepository _userRepository;
-    public UserController(IUserRepository userRepository)
-    {
-        _userRepository = userRepository;
-    }
+    private readonly IUserRepository _userRepository = userRepository;
 
     [HttpGet]
     public ActionResult<List<User>> GetAll()

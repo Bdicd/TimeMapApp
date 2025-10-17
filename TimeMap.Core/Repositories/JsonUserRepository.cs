@@ -8,10 +8,11 @@ public class JsonUserRepository : IUserRepository
 {
     private readonly string _filePath;
     private readonly List<User> _users;
+    private readonly string _absolutePath = "Data/users.json";
 
     public JsonUserRepository()
     {
-        _filePath = Path.Combine(AppContext.BaseDirectory, "Data", "users.json");
+        _filePath = Path.Combine(AppContext.BaseDirectory, _absolutePath);
         _users = LoadFromJson();
 
     }
