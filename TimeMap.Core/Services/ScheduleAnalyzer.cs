@@ -14,12 +14,13 @@ public class ScheduleAnalyzer(IAvailabilityRepository availabilityRepository)
     private readonly IAvailabilityRepository _availabilityRepository = availabilityRepository;
 
 
-    List<BestSlot> FindBestCommonSlots(DateTime start, DateTime end)
+    public List<BestSlot> FindBestCommonSlots(DateTime start, DateTime end)
     {
         var allAvailabilities = _availabilityRepository.GetAll();
         var relevantAvailabilities = allAvailabilities
                 .Where(a => a.EndTimeUtc >= start && a.StartTimeUtc <= end)
                 .ToList();
+        // there must be some good logic 
         return new List<BestSlot>();
     }
 }

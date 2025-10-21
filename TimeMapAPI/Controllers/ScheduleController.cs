@@ -12,7 +12,8 @@ public class ScheduleController(IAvailabilityRepository availabilityRepository) 
     [HttpGet("best-slots")]
     public ActionResult<List<User>> GetBestSlots([FromQuery] DateTime start, [FromQuery] DateTime end)
     {
-
-        return Ok();
+        var analyzer = new ScheduleAnalyzer(availabilityRepository);
+        var bestSlots = analyzer.FindBestCommonSlots(start, end);
+        return Ok(bestSlots);
     }
 }
