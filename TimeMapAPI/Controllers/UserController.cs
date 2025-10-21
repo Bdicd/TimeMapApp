@@ -17,7 +17,7 @@ public class UserController(IUserRepository userRepository) : ControllerBase
         return Ok(users);
     }
     [HttpPost]
-    public ActionResult AddUser( string name, string password)
+    public ActionResult AddUser(string name, string password)
     {
         var newUser = new User
         {
