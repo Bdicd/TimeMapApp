@@ -19,11 +19,14 @@ public class AvailabilityController(
     }
 
     [HttpPost("{userId}")]
-    public ActionResult AddAvailability(Guid userId, DateTime startTimeUtc, DateTime endTimeUtc)
+    public ActionResult AddAvailability(Guid userId, string password, DateTime startTimeUtc, DateTime endTimeUtc)
     {
         var user = userRepository.GetById(userId);
+        
         if (user == null)
             return NotFound($"User with id {userId} not found");
+        if (user.Password != password)
+            return Unauthorized("Неверный пароль");
 
         var availability = new Availability
         {

@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeMap.Application\TimeMap.Application.csproj" />
     <ProjectReference Include="..\TimeMap.Core\TimeMap.Core.csproj" />
     <ProjectReference Include="..\TimeMap.Domain\TimeMap.Domain.csproj" />
   </ItemGroup>

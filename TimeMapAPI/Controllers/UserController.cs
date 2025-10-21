@@ -17,12 +17,13 @@ public class UserController(IUserRepository userRepository) : ControllerBase
         return Ok(users);
     }
     [HttpPost]
-    public ActionResult AddUser([FromBody] string name)
+    public ActionResult AddUser( string name, string password)
     {
         var newUser = new User
         {
             Id = Guid.NewGuid(),
-            Name = name
+            Name = name,
+            Password = password
         };
 
         _userRepository.Add(newUser);
