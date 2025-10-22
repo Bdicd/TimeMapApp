@@ -9,6 +9,7 @@ namespace TimeMap.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var configuration = builder.Configuration;
 
             builder.Services.AddAuthorization();
             builder.Services.AddConnections();

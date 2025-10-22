@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -8,29 +9,12 @@ public class JsonUserRepository : IUserRepository
 {
     private readonly string _filePath;
     private readonly List<User> _users;
-    private readonly string _absolutePath = "Data/users.json";
 
-    public JsonUserRepository()
+    public JsonUserRepository(IConfiguration configuration)
     {
-        _filePath = Path.Combine(AppContext.BaseDirectory, _absolutePath);
+        _filePath = Path.Combine(AppContext.BaseDirectory, configuration["DataPaths:Users"]);
         _users = LoadFromJson();
 
-    }
-
-    private List<User> LoadFromJson()
-    {
-        if (!File.Exists(_filePath))
-            return [];
-
-        var json = File.ReadAllText(_filePath);
-        var users = JsonSerializer.Deserialize<List<User>>(json);
-        return users ?? [];
-    }
-
-    private void SavetoJson()
-    {
-        var json = JsonSerializer.Serialize(_users, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(_filePath, json);
     }
 
     public void Add(User user)
@@ -47,5 +31,19 @@ public class JsonUserRepository : IUserRepository
     public User? GetById(Guid id)
     {
         return _users.FirstOrDefault(u => u.Id == id);
+    }
+    private void SavetoJson()
+    {
+        var json = JsonSerializer.Serialize(_users, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(_filePath, json);
+    }
+    private List<User> LoadFromJson()
+    {
+        if (!File.Exists(_filePath))
+            return [];
+
+        var json = File.ReadAllText(_filePath);
+        var users = JsonSerializer.Deserialize<List<User>>(json);
+        return users ?? [];
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -8,11 +9,10 @@ public class JsonAvailabilityRepository : IAvailabilityRepository
 {
     private readonly string _filePath;
     private readonly List<Availability> _availabilities;
-    private readonly string _absolutePath = "Data/availabilities.json";
 
-    public JsonAvailabilityRepository()
+    public JsonAvailabilityRepository(IConfiguration configuration)
     {
-        _filePath = Path.Combine(AppContext.BaseDirectory, _absolutePath);
+        _filePath = Path.Combine(AppContext.BaseDirectory, configuration["DataPaths:Availabilities"]);
         _availabilities = LoadFromJson();
     }
 
