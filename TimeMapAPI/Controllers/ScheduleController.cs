@@ -10,10 +10,10 @@ namespace TimeMap.API.Controllers;
 public class ScheduleController(IAvailabilityRepository availabilityRepository) : ControllerBase
 {
     [HttpGet("best-slots")]
-    public ActionResult<List<User>> GetBestSlots([FromQuery] DateTime start, [FromQuery] DateTime end)
+    public ActionResult<List<User>> GetBestSlots([FromQuery] DateTime startUtc, [FromQuery] DateTime endUtc)
     {
         var analyzer = new ScheduleAnalyzer(availabilityRepository);
-        var bestSlots = analyzer.FindBestCommonSlots(start, end);
+        var bestSlots = analyzer.FindBestCommonSlots(startUtc, endUtc);
         return Ok(bestSlots);
     }
 }

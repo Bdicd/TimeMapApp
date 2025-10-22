@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeMap.Core.Models;
+namespace TimeMap.Domain.Models;
 
 public class BestSlot
 {
-    public DateTime Start { get; init; }
-    public DateTime End { get; init; }
+    public required DateTime StartUtc { get; init; }
+    public required DateTime EndUtc { get; init; }
     public List<Guid> UserIds { get; init; } = [];
 }
