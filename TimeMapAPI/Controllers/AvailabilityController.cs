@@ -10,8 +10,6 @@ public class AvailabilityController(
         IAvailabilityRepository availabilityRepository,
         IUserRepository userRepository) : ControllerBase
 {
-
-
     [HttpGet]
     public ActionResult<List<Availability>> GetAll()
     {
@@ -22,7 +20,7 @@ public class AvailabilityController(
     public ActionResult AddAvailability(Guid userId, string password, DateTime startTimeUtc, DateTime endTimeUtc)
     {
         var user = userRepository.GetById(userId);
-        
+
         if (user == null)
             return NotFound($"User with id {userId} not found");
         if (user.Password != password)
@@ -35,7 +33,7 @@ public class AvailabilityController(
             StartTimeUtc = startTimeUtc,
             EndTimeUtc = endTimeUtc
         };
-        
+
         availabilityRepository.Add(availability);
         return Ok(availability);
     }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeMap.Core.Interfaces;
+﻿using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 using TimeMap.Domain.Models;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace TimeMap.Core.Services;
 
@@ -19,7 +13,7 @@ public class ScheduleAnalyzer(IAvailabilityRepository availabilityRepository)
             .GetAll()
             .Where(a => a.EndTimeUtc >= startUtc && a.StartTimeUtc <= endUtc)
             .ToList();
-                
+
         if (relevantAvailabilities.Count == 0)
             return [];
 
@@ -32,7 +26,7 @@ public class ScheduleAnalyzer(IAvailabilityRepository availabilityRepository)
 
 
         List<BestSlot> bestSlots = CheckIntersections(relevantAvailabilities, startUtc, endUtc, threshold);
-        
+
 
         return MergeNearSlots(bestSlots);
     }
