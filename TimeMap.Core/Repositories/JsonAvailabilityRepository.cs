@@ -12,7 +12,11 @@ public class JsonAvailabilityRepository : IAvailabilityRepository
 
     public JsonAvailabilityRepository(IConfiguration configuration)
     {
-        _filePath = Path.Combine(AppContext.BaseDirectory, configuration["DataPaths:Availabilities"]);
+        var availabilitiesPath = configuration["DataPaths:Availabilities"];
+        if (string.IsNullOrWhiteSpace(availabilitiesPath))
+            throw new ArgumentException("Configuration value for 'DataPaths:Availabilities' is missing or empty.");
+
+        _filePath = Path.Combine(AppContext.BaseDirectory, availabilitiesPath);
         _availabilities = LoadFromJson();
     }
 

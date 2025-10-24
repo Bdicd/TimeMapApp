@@ -46,7 +46,6 @@ public class ScheduleAnalyzer(IAvailabilityRepository availabilityRepository)
                 .Distinct()
                 .ToList();
 
-
             if (freeUsers.Count >= threshold)
             {
                 bestSlots.Add(new BestSlot

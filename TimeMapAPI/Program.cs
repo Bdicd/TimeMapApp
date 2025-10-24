@@ -1,7 +1,6 @@
 using TimeMap.Core.Interfaces;
 using TimeMap.Core.Repositories;
 
-
 namespace TimeMap.API
 {
     public class Program

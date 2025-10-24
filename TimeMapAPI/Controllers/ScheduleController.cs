@@ -10,6 +10,7 @@ namespace TimeMap.API.Controllers;
 public class ScheduleController(IAvailabilityRepository availabilityRepository) : ControllerBase
 {
     [HttpGet("best-slots")]
+    //TODO best slots for who?
     public ActionResult<List<User>> GetBestSlots([FromQuery] DateTime startUtc, [FromQuery] DateTime endUtc)
     {
         var analyzer = new ScheduleAnalyzer(availabilityRepository);

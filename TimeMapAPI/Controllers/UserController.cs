@@ -11,11 +11,13 @@ public class UserController(IUserRepository userRepository) : ControllerBase
     private readonly IUserRepository _userRepository = userRepository;
 
     [HttpGet]
+    //TODO в какой ситуации в открытом API может понадобиться возвращать список всех пользователей?
     public ActionResult<List<User>> GetAll()
     {
         var users = _userRepository.GetAll();
         return Ok(users);
     }
+
     [HttpPost]
     public ActionResult AddUser(string name, string password)
     {
@@ -27,6 +29,7 @@ public class UserController(IUserRepository userRepository) : ControllerBase
         };
 
         _userRepository.Add(newUser);
+        //TODO подумать над безопасностью - стоит ли возвращать созданного пользователя с паролем?
         return CreatedAtAction(nameof(GetAll), new { id = newUser.Id }, newUser);
     }
 }

@@ -10,6 +10,7 @@ public class AvailabilityController(
         IAvailabilityRepository availabilityRepository,
         IUserRepository userRepository) : ControllerBase
 {
+    //TODO FIX NAMING
     [HttpGet]
     public ActionResult<List<Availability>> GetAll()
     {
