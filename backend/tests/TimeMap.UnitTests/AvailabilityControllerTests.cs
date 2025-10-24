@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using TimeMap.API.Controllers;
-using TimeMap.API.Models.Requests;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -42,7 +41,7 @@ namespace TimeMap.UnitTests
             var repo = new InMemoryAvailabilityRepoForController();
             var urepo = new InMemoryUserRepoForAvailController();
             var ctl = new AvailabilityController(repo, urepo);
-            var res = ctl.AddAvailability(Guid.NewGuid(), new AddAvailabilityRequest { Password = "p", StartTimeUtc = DateTime.UtcNow, EndTimeUtc = DateTime.UtcNow.AddHours(1) });
+            var res = ctl.AddAvailability(Guid.NewGuid(), "p", DateTime.UtcNow, DateTime.UtcNow.AddHours(1));
             Assert.IsType<NotFoundObjectResult>(res);
         }
 
@@ -54,7 +53,7 @@ namespace TimeMap.UnitTests
             var uid = Guid.NewGuid();
             urepo.Add(new User { Id = uid, Name = "n", Password = "correct" });
             var ctl = new AvailabilityController(repo, urepo);
-            var res = ctl.AddAvailability(uid, new AddAvailabilityRequest { Password = "wrong", StartTimeUtc = DateTime.UtcNow, EndTimeUtc = DateTime.UtcNow.AddHours(1) });
+            var res = ctl.AddAvailability(uid, "wrong", DateTime.UtcNow, DateTime.UtcNow.AddHours(1));
             Assert.IsType<UnauthorizedObjectResult>(res);
         }
 
@@ -66,7 +65,7 @@ namespace TimeMap.UnitTests
             var uid = Guid.NewGuid();
             urepo.Add(new User { Id = uid, Name = "n", Password = "p" });
             var ctl = new AvailabilityController(repo, urepo);
-            var res = ctl.AddAvailability(uid, new AddAvailabilityRequest { Password = "p", StartTimeUtc = DateTime.UtcNow, EndTimeUtc = DateTime.UtcNow.AddHours(1) });
+            var res = ctl.AddAvailability(uid, "p", DateTime.UtcNow, DateTime.UtcNow.AddHours(1));
             var ok = Assert.IsType<OkObjectResult>(res);
             var avail = Assert.IsType<Availability>(ok.Value);
             Assert.Single(repo.GetAll());

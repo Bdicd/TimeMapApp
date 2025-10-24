@@ -20,10 +20,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\TimeMap.Core\TimeMap.Core.csproj" />
-    <ProjectReference Include="..\..\TimeMap.Domain\TimeMap.Domain.csproj" />
-    <ProjectReference Include="..\..\TimeMapAPI\TimeMap.API.csproj" />
-  </ItemGroup>
-
 </Project>

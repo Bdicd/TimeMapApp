@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using TimeMap.API.Controllers;
-using TimeMap.API.Models.Requests;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -33,7 +32,7 @@ namespace TimeMap.UnitTests
         {
             var repo = new InMemoryUserRepoForController();
             var ctl = new UserController(repo);
-            var res = ctl.AddUser(new CreateUserRequest { Name = "n", Password = "p" });
+            var res = ctl.AddUser("n", "p");
             var created = Assert.IsType<CreatedAtActionResult>(res);
             var user = Assert.IsType<User>(created.Value);
             Assert.Equal("n", user.Name);
