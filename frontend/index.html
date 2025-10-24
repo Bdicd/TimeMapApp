@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeMap App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TimeMap App</h1>
+            <nav>
+                <button class="nav-btn active" data-page="users">Пользователи</button>
+                <button class="nav-btn" data-page="availabilities">Доступность</button>
+                <button class="nav-btn" data-page="schedule">Расписание</button>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Контент будет загружаться динамически -->
+        </main>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Загрузка...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="users.js"></script>
+    <script src="availabilities.js"></script>
+    <script src="schedule.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

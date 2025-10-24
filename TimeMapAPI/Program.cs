@@ -14,6 +14,17 @@ namespace TimeMap.API
             builder.Services.AddConnections();
             builder.Services.AddControllers();
 
+            // Настройка CORS для работы с фронтендом
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.AllowAnyOrigin()           // Разрешаем любые источники (включая file://)
+                         .AllowAnyMethod()           // Разрешаем любые HTTP методы
+                         .AllowAnyHeader();          // Разрешаем любые заголовки
+                });
+            });
+
             builder.Services.AddSingleton<IUserRepository, JsonUserRepository>();
             builder.Services.AddSingleton<IAvailabilityRepository, JsonAvailabilityRepository>();
 
@@ -30,7 +41,11 @@ namespace TimeMap.API
                 app.UseSwaggerUI();
             }
 
+            // Включаем CORS (должен быть перед UseHttpsRedirection)
+            app.UseCors("AllowFrontend");
+
             app.UseHttpsRedirection();
+
             app.MapControllers();
             //app.UseAuthorization();
 

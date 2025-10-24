@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TimeMap.API.Models.Requests;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -18,21 +19,21 @@ public class AvailabilityController(
     }
 
     [HttpPost("{userId}")]
-    public ActionResult AddAvailability(Guid userId, string password, DateTime startTimeUtc, DateTime endTimeUtc)
+    public ActionResult AddAvailability(Guid userId, [FromBody] AddAvailabilityRequest request)
     {
         var user = userRepository.GetById(userId);
 
         if (user == null)
             return NotFound($"User with id {userId} not found");
-        if (user.Password != password)
+        if (user.Password != request.Password)
             return Unauthorized("Неверный пароль");
 
         var availability = new Availability
         {
             Id = Guid.NewGuid(),
             UserId = userId,
-            StartTimeUtc = startTimeUtc,
-            EndTimeUtc = endTimeUtc
+            StartTimeUtc = request.StartTimeUtc,
+            EndTimeUtc = request.EndTimeUtc
         };
 
         availabilityRepository.Add(availability);

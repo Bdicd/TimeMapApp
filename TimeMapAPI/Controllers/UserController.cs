@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TimeMap.API.Models.Requests;
 using TimeMap.Core.Interfaces;
 using TimeMap.Domain.Entities;
 
@@ -19,13 +20,13 @@ public class UserController(IUserRepository userRepository) : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult AddUser(string name, string password)
+    public ActionResult AddUser([FromBody] CreateUserRequest request)
     {
         var newUser = new User
         {
             Id = Guid.NewGuid(),
-            Name = name,
-            Password = password
+            Name = request.Name,
+            Password = request.Password
         };
 
         _userRepository.Add(newUser);
