@@ -9,4 +9,8 @@ TODO list:
 - add controllers (done)
 - core-logic (kinda, could improve)
 - add $wagger (done)
-- *maybe UI* (eh~)
+- *maybe UI* (done with the help of MIGHTY CURSOR)
+- add rooms
+- do not show user's passwords
+- make good
+- do not make bad
